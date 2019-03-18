@@ -1,10 +1,7 @@
 package com.springbootcache;
 
 import com.springbootcache.bean.Employee;
-//import com.springbootcache.elasticsearch.EmployeeRepository;
-import com.springbootcache.elasticsearch.EmployeeRepository;
 import com.springbootcache.service.EmployeeService;
-import com.springbootcache.service.impl.EmployeeServiceImpl;
 import io.searchbox.client.JestClient;
 import io.searchbox.core.Index;
 import io.searchbox.core.Search;
@@ -15,7 +12,6 @@ import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,7 +20,8 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
-import java.util.Random;
+
+//import com.springbootcache.elasticsearch.EmployeeRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -48,8 +45,8 @@ public class Springboot01CacheApplicationTests {
     @Autowired
     JestClient jestClient;
 
-    @Autowired
-    EmployeeRepository employeeRepository;
+//    @Autowired
+//    EmployeeRepository employeeRepository;
 
     @Test
     public void contextLoads() {
@@ -66,22 +63,22 @@ public class Springboot01CacheApplicationTests {
     /**
      * 给队列发送消息
      */
-    @Test
-    public void sendRabbitmq(){
-        Employee employee = new Employee();
-        employee.setId(2);
-        employee.setLastName("李四");
-        employee.setEmail("lisi@qq.com");
-        employee.setGender(1);
-        employee.setdId(2);
-        rabbitTemplate.convertAndSend("exchange.direct","atguigu",employee);
-    }
+//    @Test
+//    public void sendRabbitmq(){
+//        Employee employee = new Employee();
+//        employee.setId(2);
+//        employee.setLastName("李四");
+//        employee.setEmail("lisi@qq.com");
+//        employee.setGender(1);
+//        employee.setdId(2);
+//        rabbitTemplate.convertAndSend("exchange.direct","atguigu",employee);
+//    }
 
-    @Test
-    public void getRabbitmq(){
-        Employee employee =(Employee) rabbitTemplate.receiveAndConvert("atguigu");
-        System.out.println(employee);
-    }
+//    @Test
+//    public void getRabbitmq(){
+//        Employee employee =(Employee) rabbitTemplate.receiveAndConvert("atguigu");
+//        System.out.println(employee);
+//    }
 
     /**
      * 根据AmqpAdmin创建exchange,queue以及binding
@@ -130,15 +127,15 @@ public class Springboot01CacheApplicationTests {
         }
     }
 
-    @Test
-    public void  testSpringDataElasticSearch(){
-        Employee employee = new Employee();
-        employee.setId(2);
-        employee.setLastName("李四");
-        employee.setEmail("lisi@qq.com");
-        employee.setGender(1);
-        employee.setdId(2);
-        employeeRepository.index(employee);
-    }
+//    @Test
+//    public void  testSpringDataElasticSearch(){
+//        Employee employee = new Employee();
+//        employee.setId(2);
+//        employee.setLastName("李四");
+//        employee.setEmail("lisi@qq.com");
+//        employee.setGender(1);
+//        employee.setdId(2);
+//        employeeRepository.index(employee);
+//    }
 
 }

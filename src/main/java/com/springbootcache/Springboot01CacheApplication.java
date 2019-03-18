@@ -5,6 +5,8 @@ import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * 快速体验缓存:
@@ -53,12 +55,21 @@ import org.springframework.cache.annotation.EnableCaching;
  *           两种用法:
  *              1).编写一个ElasticsearchRepository
  *
+ *  开启异步,定时,邮件任务
+ *     1.异步:
+ *        1).主程序注解@EnableAsync
+ *        2).方法添加@Async注解
+ *     2.定时:
+ *        1).主程序注解@EnableScheduling
+ *        2).方法添加@
  *
  */
 @SpringBootApplication
 @MapperScan("com.springcache.dao")
 @EnableCaching
 @EnableRabbit
+@EnableAsync
+@EnableScheduling
 public class Springboot01CacheApplication {
 
     public static void main(String[] args) {

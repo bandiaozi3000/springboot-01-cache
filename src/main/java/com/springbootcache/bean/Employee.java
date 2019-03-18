@@ -1,13 +1,11 @@
 package com.springbootcache.bean;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.io.Serializable;
 
 @Document(indexName = "bandiaozi",type = "emp")
 public class Employee implements Serializable {
-    @Id
     private Integer id;
     private String lastName;
     private String email;

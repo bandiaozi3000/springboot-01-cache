@@ -1,6 +1,7 @@
 package com.springbootcache.controller;
 
 import com.springbootcache.bean.Employee;
+import com.springbootcache.service.AsyncService;
 import com.springbootcache.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,9 @@ public class EmployeeController {
 
     @Autowired
     EmployeeService employeeService;
+
+    @Autowired
+    AsyncService asyncService;
 
     @GetMapping("/emp/{id}")
     @ResponseBody
@@ -35,4 +39,19 @@ public class EmployeeController {
         employeeService.deleteEmployeeById(id);
         return "删除成功";
     }
+
+    @RequestMapping("/async")
+    @ResponseBody
+    public String async(){
+        asyncService.printAsync();
+        return "异步测试";
+    }
+
+    @RequestMapping("/schedule")
+    @ResponseBody
+    public String schedule(){
+        asyncService.printAsync();
+        return "定时测试";
+    }
+
 }
